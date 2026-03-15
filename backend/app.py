@@ -1,18 +1,19 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import mysql.connector
+import os
 
 app = Flask(__name__)
 # Enable CORS for frontend running on localhost:5173
 CORS(app)
 
 def get_db_connection():
-    # Database connection template from requirements
     return mysql.connector.connect(
-        host="localhost",
-        user="root",
-        password="kamaltamil@.",
-        database="login_system"
+        host=os.environ.get('MYSQLHOST', 'localhost'),
+        user=os.environ.get('MYSQLUSER', 'root'),
+        password=os.environ.get('MYSQLPASSWORD', 'kamaltamil@.'),
+        database=os.environ.get('MYSQLDATABASE', 'login_system'),
+        port=int(os.environ.get('MYSQLPORT', 3306))
     )
 
 @app.route('/signup', methods=['POST'])
@@ -88,4 +89,4 @@ def login():
 
 if __name__ == '__main__':
     # Run the Flask app on port 5000
-    app.run(port=5000, debug=True)
+    app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)), debug=False)
