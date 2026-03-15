@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 // Backend server URL
-const API_URL = 'http://localhost:5000';
+const API_URL ="https://noble-perfection-production-e41a.up.railway.app";
 
 export default function LoginPage({ onLogin }) {
   const [isSignUp, setIsSignUp] = useState(false);
