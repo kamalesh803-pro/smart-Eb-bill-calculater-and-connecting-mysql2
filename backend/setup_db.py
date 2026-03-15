@@ -5,9 +5,10 @@ def create_database_and_table():
         # Connect to MySQL engine to create DB
         print("Connecting to MySQL...")
         db_setup = mysql.connector.connect(
-            host="localhost",
+            host="caboose.proxy.rlwy.net",
             user="root",
-            password="kamaltamil@."
+            port=32866,
+            password="FLegbFcAmdBXlDppUzjbvfAIUwarwPkV"
         )
         cursor_setup = db_setup.cursor()
         
